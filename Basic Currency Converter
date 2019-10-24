@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+
+
+function euroConverter(){
+document.converter.dollar.value = document.converter.euro.value * 1.470
+document.converter.pound.value = document.converter.euro.value * 0.717
+document.converter.rupee.value = document.converter.euro.value * 80
+}
+function dollarConverter(){
+document.converter.euro.value = document.converter.dollar.value * 0.680
+document.converter.pound.value = document.converter.dollar.value * 0.488
+document.converter.rupee.value = document.converter.dollar.value * 65
+}
+function poundConverter(){
+document.converter.dollar.value = document.converter.pound.value * 2.049
+document.converter.euro.value = document.converter.pound.value * 1.394
+document.converter.rupee.value = document.converter.pound.value * 99
+}
+function rupeeConverter(){
+document.converter.dollar.value = document.converter.rupee.value * 0.0149
+document.converter.pound.value = document.converter.rupee.value * 0.0101
+document.converter.euro.value = document.converter.rupee.value * 0.0125
+}
+
+</script>
+</head>
+
+<body>
+<form name="converter">
+    <h1 style="color:Blue;"> Converter Form (WS 2019) </h1>
+<table border="0">
+<tr>
+<td>Euro: </td><td><input type="text" name="euro" onChange="euroConverter()" /></td>
+</tr>
+<tr>
+<td>US Dollar: </td><td><input type="text" name="dollar" onChange="dollarConverter()" /></td>
+</tr>
+<tr>
+<td>British Pound:</td><td><input type="text" name="pound" onChange="poundConverter()" /></td>
+</tr>
+<tr>
+<td>Indian Rupee: </td><td><input type="text" name="rupee" onChange="rupeeConverter()" /></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="button" value="Convert!" /></td>
+</tr
+</table>
+</form>
