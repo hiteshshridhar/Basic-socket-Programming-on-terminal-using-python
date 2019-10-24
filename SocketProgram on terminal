@@ -1,0 +1,41 @@
+import socket
+myserver = socket.gethostname()
+port_no = 1237
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((myserver, port_no))
+server.listen(5)
+print("Server started")
+print("Waiting for client request..")
+
+clientConnection,clientAddress = server.accept()
+print("Connected client :" , clientAddress)
+msg = ''
+while True:
+  incoming_data = clientConnection.recv(1024)
+  msg = incoming_data.decode()
+  if msg=='bye':
+    break
+  print("Client...:" , msg)
+  outgoing_data = input()
+  clientConnection.sendall(bytes(outgoing_data,'UTF-8'))
+print("Client disconnected....")
+clientConnection.close()
+
+
+client model:
+
+import socket
+myclient = socket.gethostname()
+port_no = 1237
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect((myclient,port_no))
+client.sendall(bytes("This is from client machine..",'utf-8'))
+
+while True:
+    incoming_data= client.recv(1024)
+    print("Server...: ",incoming_data.decode())
+    outgoing_data= input()
+    client.sendall(bytes(outgoing_data,'utf-8'))
+    if outgoing_data=='bye' or outgoing_data=='c yaa':
+        break
+client.close()
